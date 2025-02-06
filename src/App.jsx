@@ -1,11 +1,12 @@
 import { useState } from 'react'
-
+import Learner from "./component/Learner"
 import './App.css'
 
 
 // The following requirements must be met for this lab to be considered successful:
 
-// 1. The layout and styling of the site is left up to your discretion. There are no layout or styling requirements, but you should always make sure your web applications are neat, sensible, and provide a good user experience.
+// 1. The layout and styling of the site is left up to your discretion. There are no layout or styling requirements, 
+//    but you should always make sure your web applications are neat, sensible, and provide a good user experience.
 // 2. Use the provided array of "learner" data below to initialize state as an object with a learners key in the <App> component.
 // 3. Code the <App> component to display a <Learner> component for each learner object in the learners array being held in state.
 // 4. Code the <Learner> component so that it:
@@ -14,8 +15,8 @@ import './App.css'
 // 5. Code the <Score> component so that it renders the score object's date & score properties.
 
 function App() {
-  const [count, setCount] = useState(0)
-  const learner = [
+  
+  let initialLearners = [
     {
       name: 'Cait Yomorta',
       bio: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus placeat nostrum explicabo? Voluptatibus expedita saepe officia optio, commodi totam ratione laudantium ipsum porro molestias, quasi nulla minus vitae laboriosam corrupti Delectus inventore explicabo est odit incidunt rem a recusandae eum pariatur. Aperiam doloremque blanditiis harum voluptate animi fugit beatae asperiores quo, dignissimos sed illum veniam eum accusantium nulla quod voluptatum',
@@ -74,11 +75,32 @@ function App() {
         }
       ]
     }
-  ]
+  ];
+
+  const [learners, setLearnerData] = useState(initialLearners);
+  console.log(learners);
+
+  
+
+  
+
+
 
   return (
     <>
       <h1>ALAB 320H.3.1 - Rendering Arrays from State</h1>
+      {learners.map((learner, index) => (
+        <>
+          <h2>Learner {index+1} </h2>         
+          <Learner 
+              name={learner.name} 
+              bio={learner.bio} 
+              scores={learner.scores} 
+          />
+        </>
+        ))
+      }
+
     </>
   )
 }
